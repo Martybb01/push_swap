@@ -6,10 +6,10 @@ RM = rm -f
 LIBFT = libft_super/libft.a
 
 SRC = main.c \
-split.c \
 error_free.c \
 stack_init.c \
-stack_utils.c
+stack_utils.c \
+parsing.c
 
 OBJ = $(SRC:.c=.o)
 

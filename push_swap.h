@@ -6,7 +6,7 @@
 /*   By: marboccu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 15:03:57 by marboccu          #+#    #+#             */
-/*   Updated: 2024/01/19 19:27:15 by marboccu         ###   ########.fr       */
+/*   Updated: 2024/01/24 13:48:16 by marboccu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,17 @@ typedef struct s_stack
 
 char **ft_super_split(char *str, char separator);
 
-void ft_stack_init(t_stack **a, char **av, bool is_ac_2);
+void ft_stack_init(t_stack **a, char **av);
 
 void ft_free_matrix(char **matrix);
-void ft_free_error(t_stack **a, char **av, bool is_ac_2);
+void ft_free_error(t_stack **a, char **av);
 int ft_syntax_error(char *str);
 int ft_duplicate_error(t_stack *stack, int num);
+void ft_error(void);
 
 t_stack *ft_find_last_node(t_stack *head);
 void ft_add_new_node(t_stack **stack, int num);
+
+t_stack *checker_input(int ac, char **av);
 
 #endif

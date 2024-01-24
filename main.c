@@ -6,7 +6,7 @@
 /*   By: marboccu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 15:06:12 by marboccu          #+#    #+#             */
-/*   Updated: 2024/01/19 19:47:09 by marboccu         ###   ########.fr       */
+/*   Updated: 2024/01/24 13:50:27 by marboccu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,28 +42,46 @@
 // 	return (stack);
 // }
 
+// int main(int ac, char **av)
+// {
+// 	t_stack *a;
+// 	//  t_stack *b;
+
+// 	a = NULL;
+// 	//  b = NULL;
+// 	if (ac == 1 || (ac == 2 && !av[1][0]))
+// 	{
+// 		printf("Error\n");
+// 		return (1);
+// 	}
+// 	else if (ac == 2)
+// 	{
+// 		av = ft_super_split(av[1], 32);
+// 	}
+// 	ft_stack_init(&a, av + 1, ac == 2);
+// 	while (*av)
+// 	{
+// 		printf("%s\n", *av);
+// 		av++;
+// 	}
+
+// 	return (0);
+// }
+
 int main(int ac, char **av)
 {
-	t_stack *a;
-	//  t_stack *b;
+	t_stack *stack_a;
+	// int i;
 
-	a = NULL;
-	//  b = NULL;
-	if (ac == 1 || (ac == 2 && !av[1][0]))
+	stack_a = checker_input(ac, av);
+	// i = 0;
+	//  if (stack_a == NULL)
+	//  	ft_error();
+	// ft_stack_init(&stack_a, av + 1);
+	while (stack_a)
 	{
-		printf("Error\n");
-		return (1);
+		ft_printf("stack_a = %d\n", stack_a->value);
+		stack_a = stack_a->next;
 	}
-	else if (ac == 2)
-	{
-		av = ft_super_split(av[1], 32);
-	}
-	ft_stack_init(&a, av + 1, ac == 2);
-	while (*av)
-	{
-		printf("%s\n", *av);
-		av++;
-	}
-
 	return (0);
 }
