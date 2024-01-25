@@ -6,42 +6,11 @@
 /*   By: marboccu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 13:50:39 by marboccu          #+#    #+#             */
-/*   Updated: 2024/01/24 13:52:16 by marboccu         ###   ########.fr       */
+/*   Updated: 2024/01/25 16:59:46 by marboccu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int atoi_plus(char *str)
-{
-	int res;
-	int i;
-	int sign;
-
-	i = 0;
-	res = 0;
-	sign = 1;
-	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
-		i++;
-	if (str[i] == '-')
-	{
-		sign = -1;
-		i++;
-	}
-	else if (str[i] == '+')
-		i++;
-	while (str[i])
-	{
-		// if (str[i] < '0' || str[i] > '9')
-		// {
-		// 	ft_printf("str = %s\n", str);
-		// 	ft_error();
-		// }
-		res = res * 10 + str[i] - '0';
-		i++;
-	}
-	return (res * sign);
-}
 
 t_stack *checker_string(char **av)
 {
@@ -55,9 +24,11 @@ t_stack *checker_string(char **av)
 	tmp = ft_split(av[1], 32);
 	while (tmp[i])
 	{
-		j = atoi_plus(tmp[i]);
+		ft_syntax_error(tmp[i]);
+		ft_duplicate_error(stack_a, ft_atoi(tmp[i]));
+		j = ft_atoi(tmp[i]);
 		ft_add_new_node(&stack_a, j);
-		printf("j = %d\n", j);
+		// printf("j = %d\n", j);
 		i++;
 	}
 	free(tmp);
@@ -80,9 +51,11 @@ t_stack *checker_input(int ac, char **av)
 	{
 		while (i < ac)
 		{
-			j = atoi_plus(av[i]);
+			ft_syntax_error(av[i]);
+			ft_duplicate_error(stack_a, ft_atoi(av[i]));
+			j = ft_atoi(av[i]);
 			ft_add_new_node(&stack_a, j);
-			printf("j = %d\n", j);
+			// printf("j = %d\n", j);
 			i++;
 		}
 	}

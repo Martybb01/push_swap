@@ -6,7 +6,7 @@
 /*   By: marboccu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 18:36:41 by marboccu          #+#    #+#             */
-/*   Updated: 2024/01/24 13:48:03 by marboccu         ###   ########.fr       */
+/*   Updated: 2024/01/25 16:51:47 by marboccu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,14 @@ int ft_syntax_error(char *str)
 	i = 0;
 	while (str[i])
 	{
-		// if (str[i] == '-' || str[i] == '+')
-		// 	i++;
-		if (str[i] < '0' || str[i] > '9')
+		if (str[i] == 32 || str[i] == 43 || str[i] == 45 || (str[i] >= 48 && str[i] <= 57))
+		{
+			if (str[i + 1] == 43 || str[i + 1] == 45)
+				ft_error();
+			i++;
+		}
+		else
 			ft_error();
-		i++;
 	}
 	return (0);
 }
@@ -55,7 +58,8 @@ int ft_duplicate_error(t_stack *stack, int num)
 	while (stack)
 	{
 		if (stack->value == num)
-			return (1);
+
+			ft_error();
 		stack = stack->next;
 	}
 	return (0);
